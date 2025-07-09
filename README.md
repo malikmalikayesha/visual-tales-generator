@@ -5,6 +5,7 @@ The Visual Tales Generator is designed to transform narrative text into sequenti
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [System Architecture Flow](#system-architecture-flow)
 - [Story Processing Pipeline](#story-processing-pipeline)
 - [Image Generation System](#image-generation-system)
 - [Key Features](#key-features)
@@ -15,6 +16,14 @@ The Visual Tales Generator is designed to transform narrative text into sequenti
 
 The Visual Tales Generator facilitates automated conversion of written narratives into visual storyboards, providing content creators with an AI-powered tool for sequential image generation. The system operates through two main processing stages:
 
+## System Architecture Flow
+<div align="center">
+  <img src="assets/flow_diagram.png" alt="AI Visual Storytelling Engine Architecture" width="600"/>
+  <br/>
+  <em>Complete processing pipeline from input (a sentence in the <a href="./input_sentence.json">input_sentence.json</a>) to final image generation</em>
+</div>
+
+
 ## Story Processing Pipeline
 
 The story processing begins when users provide narrative input through a JSON file. The user's story content is analyzed and expanded using GPT-4 AI processing. Following are the functionalities within the story processing pipeline:
@@ -23,6 +32,12 @@ The story processing begins when users provide narrative input through a JSON fi
 
 - **Description**: Transform user input into complete 3-sentence narratives.
 - **Functionality**: Takes initial story concepts and expands them into full narrative structures using OpenAI GPT-4. The system analyzes character relationships, plot progression, and thematic elements to create coherent storytelling sequences.
+- **Example**:
+<div align="center">
+  <img src="assets/prompt_generation_example.png" alt="AI Visual Storytelling Engine Architecture" width="600"/>
+  <br/>
+  <em>AI agent processing story parameters and generating sequential image prompts with character consistency across all three scenes</em>
+</div>
 
 ### **Element Extraction & Analysis**
 
@@ -45,6 +60,29 @@ The image generation system processes the analyzed story content and creates seq
   - **Image 1**: Secondary character and action (establishing shot)
   - **Image 2**: Main character action or participation (focus shot)
   - **Image 3**: Environmental/object focus excluding main characters (detail shot)
+
+**Example**: 
+Following images were generated for the input sentence: 
+"In the evening, we made bar b que and took a cup of tea."
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="story/sentence3_prompt1.jpg" alt="Scene 1" width="250"/><br/>
+        <em>Secondary Character Action</em>
+      </td>
+      <td align="center">
+        <img src="story/sentence3_prompt2.jpg" alt="Scene 2" width="250"/><br/>
+        <em>Main Character Participation</em>
+      </td>
+      <td align="center">
+        <img src="story/sentence3_prompt3.jpg" alt="Scene 3" width="250"/><br/>
+        <em>Environmental Focus</em>
+      </td>
+    </tr>
+  </table>
+</div>
 
 ### **Flux Model Integration**
 
